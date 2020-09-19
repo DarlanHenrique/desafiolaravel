@@ -20,5 +20,7 @@ Route::middleware('auth')->group(function(){
         
     })->name('dashboard');
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('/categories', 'CategoryController');
+    Route::resource('/courses', 'CourseController');
     Route::resource('/users','UserController');
 });

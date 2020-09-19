@@ -14,6 +14,15 @@
         <label for="email" class="required">E-mail </label>
         <input type="email" name="email" id="email" autocomplete="off" required class="form-control" value="{{ old('email', $user->email )}}">
     </div>
+
+    <div class="form-froup col-12">
+        <label for="course_id" class="required">Cursos </label>
+        <select class="form-control select2" required value="0" id="categoria" name="course_id">
+            @foreach($courses as $course)
+                <option value="{{ $course->id }}">{{ $course->name }}</option>
+            @endforeach
+        </select>
+    </div>
     
     @if(!isset($show))
         @if(Route::is('users.edit'))

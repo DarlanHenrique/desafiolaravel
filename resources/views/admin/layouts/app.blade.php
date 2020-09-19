@@ -9,6 +9,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('css/app.css')}}">
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
   @stack('styles')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -59,6 +64,7 @@
 </div>
 <!-- ./wrapper -->
 <script src="{{ asset('js/app.js') }}"></script>  
+<script src="{{ asset('js/video.js') }}"></script>  
 <script>
   var errors = {!! $errors !!}
 </script>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Course;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 class UserController extends Controller
@@ -30,8 +31,9 @@ class UserController extends Controller
      */
     public function create()
     {
+        $courses = Course::all();
         $user = new User();
-        return view('admin.users.create',compact('user'));
+        return view('admin.users.create',compact('user', 'courses'));
     }
 
     /**
@@ -42,7 +44,9 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        User::create($request->except('confirm_password'));
+        $data = $request->except('confirm_password');
+        $user->course()->attach($request->course_id);
+        User::create($data);
         return redirect()->route('users.index')->with('success',true);
     }
 
@@ -54,7 +58,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('admin.users.show',compact('user'));
+        $courses = Course::all();
+        return view('admin.users.show',compact('user', 'courses'));
     }
 
     /**
@@ -65,7 +70,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.users.edit',compact('user'));
+        $courses = Course::all();
+        return view('admin.users.edit',compact('user', 'courses'));
     }
 
     /**

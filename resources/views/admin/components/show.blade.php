@@ -6,5 +6,8 @@
         <div class="card-body">
             {{ $form ?? null }}
         </div>
+        <div class="card-footer">
+            {{ $back ?? null }}
+        </div>
     </div>
 </div>
